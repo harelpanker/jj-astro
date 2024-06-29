@@ -3,47 +3,64 @@ import placeholder from "@assets/placeholder.jpg";
 import placeholder2 from "@assets/placeholder2.jpg";
 
 import { Image } from "astro:assets";
+
+const images = [placeholder, placeholder2];
 ---
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css"
+/>
 
 <section class="bg-light-green text-light-green relative z-20 min-h-dvh py-16">
   <div
     class="bg-dark-green flex w-full flex-col gap-y-9 rounded-3xl px-5 pb-5 pt-16 text-center"
   >
     <h2 class="text-3xl font-bold lg:text-7xl">מעט ממה שתראו בטיול</h2>
-    <!-- <Image src={placeholder} alt="Image 1" width={1920} height={1280} />  -->
     <!-- Slider main container -->
-    <div class="swiper">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <div class="w-fullh-[80vh] relative">
-            <Image
-              class="w-full h-full object-cover"
-              src={placeholder}
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="w-fullh-[80vh] relative">
-            <Image
-              class="w-full h-full object-cover"
-              src={placeholder2}
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="w-fullh-[80vh] relative">
-            <Image
-              class="w-full h-full object-cover"
-              src={placeholder}
-              alt=""
-            />
-          </div>
-        </div>
+    <div class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {
+            images.map((image) => (
+              <li class="splide__slide">
+                <figure class="w-full h-[80vh] relative overflow-hidden rounded-3xl">
+                  <Image
+                    class="h-full w-full object-cover"
+                    src={image}
+                    alt=""
+                  />
+                </figure>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </div>
 </section>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"
+></script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const splide = new Splide(".splide", {
+      type: "loop",
+      perMove: 1,
+      speed: 800,
+      easing: "cubic-bezier(.22,.48,.23,.92)",
+      pagination: true,
+      arrows: false,
+      focus: 1,
+      autoplay: true,
+      interval: 4500,
+      classes: {
+        prev: "splide__arrow--prev",
+        next: "splide__arrow--next",
+      },
+    });
+    splide.mount();
+  });
+</script>
