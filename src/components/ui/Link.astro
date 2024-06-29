@@ -1,0 +1,13 @@
+---
+interface Props {
+  href?: string;
+  text?: string;
+  variant?: 'primary' | 'secondary';
+}
+const { href='/', text='שמור את מקומך', variant = 'primary' } = Astro.props;
+---
+<a href={href} class={`flex items-center justify-center rounded-full px-5 py-2 text-lg transition duration-300 ${
+  variant === 'primary'
+    ? 'bg-light-green text-dark-green hover:bg-light-green/70'
+    : 'bg-dark-green text-light-green hover:bg-light-green hover:text-dark-green'
+}`}>{text}</a>
