@@ -14,7 +14,7 @@ const images = [placeholder, placeholder2];
 
 <section class="bg-light-green text-light-green relative z-20 min-h-dvh py-16">
   <div
-    class="bg-dark-green flex w-full flex-col gap-y-9 rounded-3xl px-5 pb-5 pt-16 text-center"
+    class="bg-dark-green flex w-full flex-col gap-y-9 rounded-3xl px-5 pb-8 pt-16 text-center"
   >
     <h2 class="text-3xl font-bold lg:text-7xl">מעט ממה שתראו בטיול</h2>
     <!-- Slider main container -->
@@ -24,7 +24,7 @@ const images = [placeholder, placeholder2];
           {
             images.map((image) => (
               <li class="splide__slide">
-                <figure class="w-full h-[80vh] relative overflow-hidden rounded-3xl">
+                <figure class="w-full h-[70vh] 2xl:h-[80vh] relative overflow-hidden rounded-3xl">
                   <Image
                     class="h-full w-full object-cover"
                     src={image}
@@ -36,9 +36,64 @@ const images = [placeholder, placeholder2];
           }
         </ul>
       </div>
+      <div class="splide__arrows splide__arrows--rtl">
+        <button
+          class="splide__arrow splide__arrow--next"
+          type="button"
+          aria-label="Previous slide"
+          aria-controls="splide01-track"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"
+            ></path></svg
+          >
+        </button>
+        <button
+          class="splide__arrow splide__arrow--prev"
+          type="button"
+          aria-label="Next slide"
+          aria-controls="splide01-track"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="#000000"
+            viewBox="0 0 256 256"
+            ><path
+              d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"
+            ></path></svg
+          >
+        </button>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .splide__arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+  .splide__arrow {
+    border-radius: 999px;
+    width: 3rem;
+    height: 3rem;
+    background-color: #d9efde;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 
 <script
   src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"
@@ -49,12 +104,14 @@ const images = [placeholder, placeholder2];
     const splide = new Splide(".splide", {
       type: "loop",
       perMove: 1,
+      perPage: 1,
       speed: 800,
       easing: "cubic-bezier(.22,.48,.23,.92)",
-      pagination: true,
-      arrows: false,
+      pagination: false,
+      arrows: true,
       focus: 1,
       autoplay: true,
+      rewind: true,
       interval: 4500,
       classes: {
         prev: "splide__arrow--prev",
