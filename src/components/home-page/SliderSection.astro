@@ -1,34 +1,33 @@
 ---
-import placeholder from "@assets/placeholder.jpg";
-import placeholder2 from "@assets/placeholder2.jpg";
+import placeholder from '@assets/placeholder.jpg';
+import placeholder2 from '@assets/placeholder2.jpg';
 
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 const images = [placeholder, placeholder2];
 ---
 
 <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css"
+  rel='stylesheet'
+  href='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css'
 />
 
-<section class="bg-light-green text-light-green relative z-20 min-h-dvh py-16">
+<section class='bg-light-green text-light-green relative z-20 min-h-dvh py-16'>
   <div
-    class="bg-dark-green flex w-full flex-col gap-y-9 rounded-3xl px-5 pb-8 pt-16 text-center"
-  >
-    <h2 class="text-3xl font-bold lg:text-7xl">מעט ממה שתראו בטיול</h2>
+    class='bg-dark-green flex w-full flex-col gap-y-9 rounded-3xl px-5 pb-8 pt-16 text-center'>
+    <h2 class='text-3xl font-bold lg:text-7xl'>מעט ממה שתראו בטיול</h2>
     <!-- Slider main container -->
-    <div class="splide" aria-label="Splide Basic HTML Example" dir="ltr">
-      <div class="splide__track">
-        <ul class="splide__list w-full">
+    <div class='splide' aria-label='Splide Basic HTML Example' dir='ltr'>
+      <div class='splide__track'>
+        <ul class='splide__list w-full'>
           {
             images.map((image) => (
-              <li class="splide__slide">
-                <figure class="w-full h-[70vh] 2xl:h-[80vh] relative overflow-hidden rounded-3xl">
+              <li class='splide__slide'>
+                <figure class='w-full h-[70vh] 2xl:h-[80vh] relative overflow-hidden rounded-3xl'>
                   <Image
-                    class="h-full w-full object-cover"
+                    class='h-full w-full object-cover'
                     src={image}
-                    alt=""
+                    alt=''
                   />
                 </figure>
               </li>
@@ -36,41 +35,20 @@ const images = [placeholder, placeholder2];
           }
         </ul>
       </div>
-      <div class="splide__arrows splide__arrows--ltr">
+      <div class='splide__arrows splide__arrows--ltr'>
         <button
-          class="splide__arrow splide__arrow--next"
-          type="button"
-          aria-label="Previous slide"
-          aria-controls="splide01-track"
-        >
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="#000000"
-        viewBox="0 0 256 256"
-        ><path
-          d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"
-        ></path></svg
-      >
+          class='splide__arrow splide__arrow--next'
+          type='button'
+          aria-label='Previous slide'
+          aria-controls='splide01-track'>
+          <i class='ph ph-regular ph-caret-left text-2xl text-dark-green'></i>
         </button>
         <button
-          class="splide__arrow splide__arrow--prev"
-          type="button"
-          aria-label="Next slide"
-          aria-controls="splide01-track"
-        >
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="#000000"
-            viewBox="0 0 256 256"
-            ><path
-              d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"
-            ></path></svg
-          >
-
+          class='splide__arrow splide__arrow--prev'
+          type='button'
+          aria-label='Next slide'
+          aria-controls='splide01-track'>
+          <i class='ph ph-regular ph-caret-right text-2xl text-dark-green'></i>
         </button>
       </div>
     </div>
@@ -101,18 +79,18 @@ const images = [placeholder, placeholder2];
 </style>
 
 <script
-  src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"
+  src='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js'
 ></script>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const splide = new Splide(".splide", {
-      type: "loop",
+  document.addEventListener('DOMContentLoaded', () => {
+    const splide = new Splide('.splide', {
+      type: 'loop',
       perMove: 1,
       perPage: 1,
       speed: 800,
       gap: '2%',
-      easing: "cubic-bezier(.22,.48,.23,.92)",
+      easing: 'cubic-bezier(.22,.48,.23,.92)',
       pagination: false,
       arrows: true,
       focus: 1,
@@ -120,8 +98,8 @@ const images = [placeholder, placeholder2];
       rewind: true,
       interval: 4500,
       classes: {
-        prev: "splide__arrow--prev",
-        next: "splide__arrow--next",
+        prev: 'splide__arrow--prev',
+        next: 'splide__arrow--next',
       },
     });
     splide.mount();

@@ -1,0 +1,52 @@
+---
+import Container from '@components/ui/Container.astro';
+import PaddingX from '@components/ui/PaddingX.astro';
+import { Image } from 'astro:assets';
+import src from '@assets/airport.jpg';
+
+const items = [
+  { numberOfPeople: 2, text: 'זוג 45€' },
+  { numberOfPeople: 4, text: '4 איש 50€' },
+  { numberOfPeople: 6, text: '6 איש 60€' },
+  { numberOfPeople: 8, text: '8 איש 80€' },
+];
+---
+
+<section class='relative z-20 bg-light-green text-dark-green'>
+  <PaddingX>
+    <Container>
+      <div class='flex min-h-dvh flex-col gap-y-9 py-16'>
+        <div
+          class={`row relative flex flex-col items-center gap-y-6 lg:flex-row lg:gap-x-20`}>
+          <figure
+            class={`order-first w-full overflow-hidden rounded-lg lg:h-[70dvh] lg:max-w-[50%] lg:shrink-0 lg:rounded-2xl`}>
+            <Image class='h-full w-full object-cover' src={src} alt='' />
+          </figure>
+          <div
+            class='mx-auto flex items-start w-full max-w-lg flex-col gap-y-5 lg:gap-y-10'>
+            <h2 class='text-3xl font-bold lg:text-6xl'>איסוף משדה התעופה</h2>
+            <ul class='flex flex-col gap-y-3 items-start'>
+              {
+                items.map((item) => (
+                  <li class='relative flex gap-x-3 items-center px-5 py-2 text-2xl bg-dark-green text-light-green font-bold'>
+                    <div class={`flex`}>
+                      {Array.from({ length: item.numberOfPeople }, (_, i) => (
+                        <i class='ph ph-user-circle -ml-2' />
+                      ))}
+                    </div>
+                    <p>{item.text}</p>
+                  </li>
+                ))
+              }
+            </ul>
+            <p class='text-pretty text-2xl'>
+              *במידה ואני פנוי ותצטרפו לאחד מהטיולים האיסוף יהיה כ-40 יורו
+            </p>
+          </div>
+          {/* <!-- id --> */}
+          <div class='absolute -top-20 left-0 w-full' id='airport'></div>
+        </div>
+      </div>
+    </Container>
+  </PaddingX>
+</section>
