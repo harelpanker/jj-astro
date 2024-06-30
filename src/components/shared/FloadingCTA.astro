@@ -1,0 +1,30 @@
+<div
+  class='cta_wrapper is-heidden transition duration-300 fixed inset-0 top-auto left-auto right-5 bottom-5 z-50 flex items-center justify-center'>
+  <a
+    rel='noopener noreferrer'
+    target='_blank'
+    href='https://wa.me/c/436602039392'
+    class='text-3xl p-1 bg-light-green rounded-2xl flex items-center justify-center transition duration-300 hover:bg-light-green/20'>
+    <i class='ph ph-whatsapp-logo'></i>
+  </a>
+</div>
+<script>
+  const cta = document.querySelector('.cta_wrapper');
+
+  function handleScroll() {
+    if (window.scrollY > 50) {
+      cta && cta.classList.remove('is-heidden');
+    } else {
+      cta && cta.classList.add('is-heidden');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+</script>
+
+<style>
+  .is-heidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
