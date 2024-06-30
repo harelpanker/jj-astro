@@ -11,7 +11,7 @@ export default {
       colors: {
         "dark-green": "#232E26",
         "light-green": "#D9EFDE",
-        "theme-white": "F2F4F8",
+        "theme-white": "#F2F4F8",
       },
     },
   },

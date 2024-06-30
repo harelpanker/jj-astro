@@ -4,6 +4,7 @@ interface Props {
   description?: string;
 }
 import Footer from '@components/shared/Footer.astro';
+import Header from '@components/shared/Header.astro';
 import '@fontsource/alef';
 import '@phosphor-icons/web/regular';
 
@@ -26,7 +27,7 @@ const {
   <body>
     <div class='style_wrap font-alef bg-white'>
       <div class='flex-1 flex flex-col'>
-        <!-- Header -->
+        <Header />
         <main class='relative z-10 flex-1'><slot /></main>
       </div>
       <Footer />
