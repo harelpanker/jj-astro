@@ -1,0 +1,21 @@
+---
+import Container from '@components/ui/Container.astro';
+import PaddingX from '@components/ui/PaddingX.astro';
+import Link from '@components/ui/Link.astro';
+---
+
+<section class='relative z-20 bg-light-green text-dark-green'>
+  <PaddingX>
+    <Container>
+      <div class='flex flex-col gap-y-9 text-center items-center pb-20'>
+        <h2 class='text-3xl font-bold lg:text-5xl 2xl:text-7xl'>
+          הזמנת טיול ושמירת מקום
+        </h2>
+        <div class='flex flex-col gap-y-2'>
+          <Link text='הזמן עכשיו' href='/contact' variant='secondary' isLg />
+          <p class='text-sm'>* המחיר לא כולל כניסה לאטרקציות</p>
+        </div>
+      </div>
+    </Container>
+  </PaddingX>
+</section>
