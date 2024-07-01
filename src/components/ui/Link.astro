@@ -4,20 +4,26 @@ interface Props {
   text?: string;
   variant?: 'primary' | 'secondary';
   isLg?: boolean;
+  isBlank?: boolean;
 }
 const {
-  href = '/',
+  href = 'https://wa.me/c/436602039392',
   text = 'שמור את מקומך',
   variant = 'primary',
   isLg = false,
+  isBlank = true,
 } = Astro.props;
 ---
 
 <a
+  rel={isBlank ? 'noopener noreferrer' : ''}
+  target={isBlank ? '_blank' : ''}
   href={href}
-  class={`flex items-center justify-center rounded-full transition duration-300 ${isLg ? 'px-8 py-4 text-xl' : 'px-5 py-2 text-lg'} ${
+  class={`flex items-center gap-x-1 justify-center rounded-full transition duration-300 ${isLg ? 'px-8 py-4 text-xl' : 'px-5 py-2 text-lg'} ${
     variant === 'primary'
       ? 'bg-light-green text-dark-green hover:bg-light-green/70'
       : 'bg-dark-green text-light-green hover:bg-dark-green/70'
-  }`}>{text}</a
->
+  }`}>
+  <i class='ph ph-whatsapp-logo'></i>
+  <span>{text}</span>
+</a>

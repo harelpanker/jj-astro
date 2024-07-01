@@ -39,7 +39,7 @@ import Link from '@components/ui/Link.astro';
       </ul>
 
       <div class='flex justify-center'>
-        <Link href='/contact' />
+        <Link />
       </div>
     </div>
 
@@ -62,6 +62,7 @@ import Link from '@components/ui/Link.astro';
     const navMenu = document.getElementById('navmenu');
     const navLinks = document.querySelectorAll('.nav_links a');
     const body = document.querySelector('body');
+    const desktopSize = 1280;
 
     let isMenuOpen = false;
 
@@ -97,12 +98,14 @@ import Link from '@components/ui/Link.astro';
         }
       });
 
-      navLinks.forEach((link) =>
-        link.addEventListener('click', () => handleHideNavbar())
-      );
+      navLinks.forEach((link) => {
+        if (window.innerWidth < desktopSize) {
+          link.addEventListener('click', () => handleHideNavbar());
+        }
+      });
 
       window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1280) {
+        if (window.innerWidth >= desktopSize) {
           handleHideNavbar();
         }
       });
